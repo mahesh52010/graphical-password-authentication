@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang=en><meta name=viewport content="width=device-width, initial-scale=1.0"><title>Sign In</title><link rel=stylesheet href=/public.7aaac8cc.css><body>
+    <div class=container>
+        <h1>Sign In</h1>
+        <form id=signinForm>
+            <label for=username>Username:</label><br>
+            <input id=username name=username required><br><br>
+            
+            <label for=password>Password:</label><br>
+            <input type=password id=password name=password required><br><br>
+            
+            <button>Sign In</button>
+        </form>
+    </div>
+
+    <script>document.getElementById("signinForm").addEventListener("submit",async e=>{e.preventDefault();let n={username:document.getElementById("username").value,password:document.getElementById("password").value};try{let e=await fetch("/signin",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(n)}),t=await e.json();e.ok?(sessionStorage.setItem("username",document.getElementById("username").value),window.location.href="/img_verification.html"):alert(`Error: ${t.message||"Signin failed"}`)}catch(e){console.error("Error:",e),alert("An error occurred during signin. Please try again.")}});</script>
+
+
