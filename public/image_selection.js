@@ -1,4 +1,6 @@
 // Array of image paths
+const backendUrl = 'https://graphical-password-authentication-vnxk.onrender.com';
+
 const images = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"];
 
 // Function to shuffle array using Fisher-Yates algorithm
@@ -67,7 +69,7 @@ async function handleNextClick() {
         
         // Send data to server
         try {
-            const response = await fetch('/complete-registration', {
+            const response = await fetch(`${backendUrl}/complete-registration`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

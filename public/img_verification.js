@@ -1,4 +1,6 @@
 // Array of image paths
+const backendUrl = 'https://graphical-password-authentication-vnxk.onrender.com';
+
 const images = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"];
 
 // Function to shuffle array using Fisher-Yates algorithm
@@ -63,7 +65,7 @@ async function handleNextClick() {
 
         // Send selected points to server for comparison
         try {
-            const response = await fetch('/compare-points', {
+            const response = await fetch(`${backendUrl}/compare-points`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

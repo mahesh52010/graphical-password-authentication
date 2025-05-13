@@ -6,7 +6,11 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 
+const backendUrl = 'https://graphical-password-authentication-vnxk.onrender.com';
+
 // Serve static files from the public directory
+app.use(cors({ origin: backendUrl }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Parse application/json
