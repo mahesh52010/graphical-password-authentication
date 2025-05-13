@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 });
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://maheshyandrapu78:Mahesh%401234@mahesh.zit48.mongodb.net/?retryWrites=true&w=majority&appName=Mahesh')
+mongoose.connect('mongodb+srv://maheshyandrapu78:<password>@mahesh.zit48.mongodb.net/?retryWrites=true&w=majority&appName=Mahesh')
   .then(() => {
     console.log('Successfully connected to MongoDB');
   })
