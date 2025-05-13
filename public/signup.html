@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signupForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required minlength="2"><br><br>
+            
+            <label for="username">Username (min 6 characters):</label><br>
+            <input type="text" id="username" name="username" required minlength="6"><br><br>
+            
+            <label for="email">Email (must be valid format):</label><br>
+            <input type="email" id="email" name="email" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" title="Please enter a valid email address"><br><br>
+            
+            <label for="password">Password (must contain: lowercase, uppercase, number, special character):</label><br>
+            <input type="password" id="password" name="password" required minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"><br><br>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            try {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    // Store user info in sessionStorage
+                    sessionStorage.setItem('userInfo', JSON.stringify(formData));
+                    alert('Signup successful! Redirecting to image selection...');
+                    window.location.href = '/image_selection.html';
+
+                } else {
+                    alert(`Error: ${result.message || 'Signup failed'}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during signup. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
