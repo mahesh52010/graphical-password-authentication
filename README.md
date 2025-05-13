@@ -67,3 +67,7 @@ const backendUrl = 'https://graphical-password-authentication-vnxk.onrender.com'
 ## License
 
 This project is licensed under the ISC License.
+
+
+## YOU CAN ACCESS THE WEBSITE WITH THE FOLLOWING URL 
+https://graphical-password-authentication-vnxk.onrender.com
